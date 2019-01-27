@@ -23,8 +23,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, database) => {
         key: fs.readFileSync('server.key'),
         cert: fs.readFileSync('server.cert')
     }, app)
-        .listen(4040, function () {
-            console.log('listening on port 4040')
+        .listen(3000, function () {
+            console.log('listening on port 3000')
         })
 });
 
