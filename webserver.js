@@ -7,7 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 let dbo;
 
-const url = 'mongodb://127.0.0.1:27017';
+const url = 'mongodb://localhost:27017';
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
