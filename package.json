@@ -4,6 +4,7 @@
   "description": "practica 1",
   "main": "index.js",
   "scripts": {
+    "start": "node webserver.js",
     "test": "npm ."
   },
   "author": "sebastian ospina cabarcas",
