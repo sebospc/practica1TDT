@@ -19,9 +19,13 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, database) => {
     }
     dbo = database.db("practica1");
     // start the express web server listening on 8080
-    app.listen(3000, function () {
-        console.log('listening on port 3000')
-    })
+    https.createServer({
+        key: fs.readFileSync('server.key'),
+        cert: fs.readFileSync('server.cert')
+    }, app)
+        .listen(3000, function () {
+            console.log('listening on port 3000')
+        })
 });
 
 
