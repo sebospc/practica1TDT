@@ -35,17 +35,31 @@ app.get('/', function (req, res) {
 })
 
 
-app.post("/singup", function (req, res) {
-    if (req.body.name == "") res.send("incorrect singup");
+app.post("/singin", function (req, res) {
+    if (req.body.name == "") res.send("incorrect sing in");
 
-    dbo.collection("usuarios").insertOne({ name: req.body.name, psswd: req.body.passwd }, function (err, resp) {
+    dbo.collection("usuarios").insertOne({ name: req.body.name, psswd: req.body.passwd, extraInfo: [] }, function (err, resp) {
         if (err) {
-            res.send("incorrect singup");
+            res.send("incorrect sing in");
         } else {
-            res.send("correct singup");
+            res.send("correct sing in");
         }
 
     })
+})
+
+app.post("/addInfoGps", function (req, res) {
+    dbo.collection("usuarios").updateOne(
+        { name: req.body.name },
+        { $push: { extraInfo: { gpsLatitud: req.body.gpsLatitud, gpsLongitud: req.body.gpsLongitud, hora: req.body.hora, fecha: req.body.fecha } } },
+        { 'upsert': true },
+        function (err, re) {
+            if (err) {
+                res.send("error while adding info")
+            }else{
+                res.send("info added correctly")
+            }
+        });
 })
 
 app.post('/login', function (req, res) {
@@ -57,7 +71,7 @@ app.post('/login', function (req, res) {
             res.send("incorrect login")
         } else {
             if (req.body.passwd == items.psswd) { //this should be encrypted
-                res.send("correct login")
+                res.send("correct")
             } else {
                 res.send("incorrect login")
             }

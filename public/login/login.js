@@ -4,7 +4,11 @@ let login = function () {
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            console.log("result " + http.responseText);
+            result = http.responseText;
+            console.log("result " + result);
+            if(result == "correct"){
+                window.location.replace('/formGPS/formgps.html?name='+document.getElementById("name").value)   
+            }
         }
     }
     
@@ -13,5 +17,5 @@ let login = function () {
 }
 
 let changeToSingup = function(){
-    window.location.replace('/singup/singup.html')   
+    window.location.replace('/singin/singin.html')   
 }
