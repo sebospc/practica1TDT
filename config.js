@@ -1,4 +1,4 @@
-var path = require('path'),
+
   env = process.env.NODE_ENV || 'test';
 
 var config = {
@@ -12,6 +12,11 @@ var config = {
     db: 'mongodb://localhost:27017/practica1',
     port: process.env.PORT || 3000,
     SECRET_TOKEN: "claveinseguratokens"
+  },
+  production: {
+    db: 'mongodb://mongo-server-practica1:27017/practica1',
+    port: process.env.PORT || 3000,
+    SECRET_TOKEN: "claveseguratokens"
   }
 };
 

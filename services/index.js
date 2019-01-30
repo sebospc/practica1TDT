@@ -13,22 +13,15 @@ function createToken(user){
 
 function decodeToken (token) {
     const decoded = new Promise((resolve, reject) => {
-        console.log("before try")
       try {
-        console.log("before payload")
         const payload = jwt.decode(token, config.SECRET_TOKEN)
-        console.log("in try")
         if (payload.exp <= moment().unix()) {
-            console.log("payload exp")
           reject({
             status: 401,
-            message: 'El token ha expirado'
           })
         }
-        console.log("before resolve")
         resolve(payload.sub)
       } catch (err) {
-        console.log("in catch erro "+err)
         reject({
           status: 500,
           message: 'Invalid Token',
@@ -36,7 +29,6 @@ function decodeToken (token) {
         })
       }
     })
-    console.log("before return")
     return decoded
   }
 

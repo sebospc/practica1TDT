@@ -20,7 +20,6 @@ function signup(req, res) {
 }
 
 function addInfoGps(req, res) {
-    console.log("req user"+req.username)
     User.updateOne({ username: req.username },
         { $push: { extraInfo: { gpsLatitud: req.body.gpsLatitud, gpsLongitud: req.body.gpsLongitud, hora: req.body.hora, fecha: req.body.fecha } } },
         (err, extr) => {
