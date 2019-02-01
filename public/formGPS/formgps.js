@@ -16,7 +16,7 @@ let startGps = function () {
 function loopPos() {
     if (!flagStop) return;
     navigator.geolocation.getCurrentPosition(sendPos);
-    setTimeout(loopPos, 5000);
+    setTimeout(loopPos, 2000);
 }
 function sendPos(position) {
 
@@ -45,6 +45,7 @@ function stopGps() {
 }
 
 function launchMap() {
+    stopGps();
     var http = new XMLHttpRequest();
     http.responseType = 'json';
     http.open("GET", "/getUserRouteGps", true);
@@ -63,12 +64,14 @@ function launchMap() {
 }
 
 function clearMap() {
+    stopGps();
     if(flightPath != null){
         flightPath.setMap(null);
     }
 }
 
 function deleteRoute(){
+    stopGps();
     clearMap();
     var http = new XMLHttpRequest();
     http.responseType = 'json';
