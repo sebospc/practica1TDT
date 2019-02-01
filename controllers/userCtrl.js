@@ -20,8 +20,9 @@ function signup(req, res) {
 }
 
 function addInfoGps(req, res) {
+    var currentDate = new Date();
     User.updateOne({ username: req.username },
-        { $push: { extraInfo: { gpsLatitud: req.body.gpsLatitud, gpsLongitud: req.body.gpsLongitud, hora: req.body.hora, fecha: req.body.fecha } } },
+        { $push: { extraInfo: { gpsLatitud: req.body.gpsLatitud, gpsLongitud: req.body.gpsLongitud, hora: currentDate.getHours(), fecha: Date.now() } } },
         (err, extr) => {
             if (err) {
                 res.status(500).send("error while adding info")
@@ -54,8 +55,29 @@ function login(req, res) {
     })
 }
 
+function getExtraInfo(req, res) {
+    User.findOne({ username: req.username }).select('username extraInfo').exec(function (err, user) {
+        if (err) return res.status(500).send({ message: err })
+        res.status(200).send({
+            message: 'User founded',
+            gpsInfo: user.extraInfo,
+        })
+
+    })
+}
+
+function deleteExtraInfo(req, res){
+    User.updateOne({username: req.username},{"$set":{"extraInfo":[]}},function(err, user){
+        if(user == null) return res.status(500).send({message: `error al buscar el usuario en delete extra info: ${err}`})
+        if(err) return res.status(500).send({message: `error al buscar el usuario en delete extra info: ${err}`})
+        res.status(200).send({message: "se borro correctamente la ruta"})
+    })
+}
+
 module.exports = {
     signup,
     addInfoGps,
-    login
+    login,
+    getExtraInfo,
+    deleteExtraInfo
 }

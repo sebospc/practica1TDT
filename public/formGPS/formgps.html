@@ -1,15 +1,36 @@
 <html>
 
 <head>
-    <br>
     <title>formgps</title>
-    <input id="latitud" type="text" placeholder="Latitud" />
-    <input id="longitud" type="text" placeholder="Longitud" />
-    </br>
-    <input id="hora" type="text" placeholder="Hora" />
-    <input id="fecha" type="text" placeholder="Fecha" />
-    <input onclick="addValues()" type="button" value="Add values">
-    <script src="/formGPS/formgps.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #map {
+            height: 80%;
+            height: 80%;
+        }
+    </style>
 </head>
+
+<body>
+        <input onclick="startGps()" type="button" value="Start gps">
+        <input onclick="stopGps()" type="button" value="Stop gps">
+        <input onclick="launchMap()" type="button" value="Show in map">
+        <input onclick="clearMap()" type="button" value="Clear map">
+        <input onclick="deleteRoute()" type="button" value="Delete route from account">
+        
+
+    <div id="map"></div>
+    <script src="/formGPS/formgps.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVdYIAnx7xY4tEC5GDeUlfMJurywb7Su4"></script>
+
+    
+
+</body>
 
 </html>
