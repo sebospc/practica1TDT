@@ -89,9 +89,10 @@ function deleteRoute(){
 function initMap(gpsInfo) {
     
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4,
+        zoom: 20,
         center: { lat: gpsInfo[0].gpsLatitud,lng: gpsInfo[0].gpsLongitud }
     });
+    
     var flightPlanCoordinates = [];
     for (var i = 0; i < gpsInfo.length; i++) {
         flightPlanCoordinates.push({ lat: gpsInfo[i].gpsLatitud, lng: gpsInfo[i].gpsLongitud })
@@ -108,4 +109,23 @@ function initMap(gpsInfo) {
     flightPath.setMap(map);
 
 
+}
+
+function showValues(){
+    
+    var http = new XMLHttpRequest();
+    http.responseType = 'json';
+    http.open("GET", "/getUserRouteGps", true);
+    http.setRequestHeader("Content-type", "application/json");
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            if(http.response.gpsInfo.length != 0){
+                document.getElementById("map").innerHTML = JSON.stringify(http.response.gpsInfo);
+            }else{
+                console.log("empty route")
+            }
+        }
+    }
+    http.setRequestHeader("authorization", localStorage.getItem("tokenPractica1"));
+    http.send();
 }
