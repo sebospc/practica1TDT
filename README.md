@@ -1,6 +1,10 @@
 # practica1TDT
 practica 1 topicos de telematica
 
+export NODE_ENV=[ development | test | production] <br>
+docker-compose build <br>
+docker-compose up <br>
+
 
 ```Saam/ <br>
 +--conttollers/                 Son las funciones las cuales serán usadas en la api.
