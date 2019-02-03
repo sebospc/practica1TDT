@@ -1,7 +1,13 @@
 # practica1TDT
 practica 1 topicos de telematica
 
-$ openssl req -nodes -new -x509 -keyout server.key -out server.cert </br>
 
-$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/nginx.key -out ssl/nginx.crt
+```Saam/ <br>
++--conttollers/                 Son las funciones las cuales serán usadas en la api.
++--middlewares/                 Están las funciones que serán invocadas antes de la funcion objetivo de la api
++--models/                      Los modelos usados en conexiones                 
++--public/                      Los archivos servidos al browser (html, js)
++--routes/                      Las rutas de la api
++--services/                    Funcionalidades extra (decofidicar, codificar)
+```
                           
