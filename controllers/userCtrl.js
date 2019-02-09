@@ -48,8 +48,7 @@ function login(req, res) {
             })
         } else {
             res.status(500).send({
-                message: 'Incorrect login',
-                token: service.createToken(user),
+                message: 'Incorrect login'
             })
         }
     })
