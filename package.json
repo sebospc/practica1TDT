@@ -12,10 +12,8 @@
   "dependencies": {
     "bcrypt": "^3.0.3",
     "express": "^4.16.4",
-    "https": "^1.0.0",
     "jwt-simple": "^0.5.5",
     "moment": "^2.24.0",
-    "mongodb": "^3.1.13",
     "mongoose": "^5.4.7"
   }
 }
