@@ -1,5 +1,5 @@
 
-var env = process.env.NODE_ENV || 'test';
+var env = process.env.NODE_ENV || 'development';
 console.log("este es el env: "+env)
 var config = {
   development: {
