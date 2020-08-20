@@ -10,7 +10,7 @@
   "author": "sebastian ospina cabarcas",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "express": "^4.16.4",
     "jwt-simple": "^0.5.5",
     "moment": "^2.24.0",
